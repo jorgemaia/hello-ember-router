@@ -15,7 +15,7 @@ The goal is to create a small CRUD implementation to demonstrate common practice
 
 Technologies
 ============
-
+-ASP.MVC 4 Web API;
 -SQL Server 2008;
 -EF4.*;
 -jQuery 1.7.2;

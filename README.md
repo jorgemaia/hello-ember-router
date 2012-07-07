@@ -15,10 +15,10 @@ The goal is to create a small CRUD implementation to demonstrate common practice
 
 Technologies
 ============
--ASP.MVC 4 Web API;
--SQL Server 2008;
--EF4.*;
--jQuery 1.7.2;
--Handlebars 1.0 b6;
--Ember 0.9.8.1
--VS Express 12 RC
+- ASP.MVC 4 Web API;
+- SQL Server 2008;
+- EF4.*;
+- jQuery 1.7.2;
+- Handlebars 1.0 b6;
+- Ember 0.9.8.1
+- VS Express 12 RC

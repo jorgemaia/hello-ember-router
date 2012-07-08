@@ -44,7 +44,7 @@ $(function () {
          }
     });
 
-    App.ContactsController = Ember.ArrayProxy.extend({
+    App.ContactsController = Ember.ArrayController.extend({
         content: [],
         isLoaded: false,
         resourceUrl: '/api/contact/%@',
@@ -201,7 +201,7 @@ $(function () {
     });
 
     App.EditContactView = Ember.View.extend({
-        templateNameBinding: 'contact-edit'
+        templateName: 'contact-edit'
     });
 
     App.AddContactView = Ember.View.extend({
@@ -242,7 +242,6 @@ $(function () {
                             router.get('contactController').remove(contact.get('id'));
                         }
                         router.get('contactsController').findAll();
-                        router.transitionTo('contacts.index');
                     },
                     contactAdd: function (router, context) {
                         var contact = App.ContactModel.create();
@@ -269,10 +268,13 @@ $(function () {
                 }),
                 edit: Ember.Route.extend({
                     route: '/:contact_id/edit',
-                    viewClass: App.EditContactView,
                     connectOutlets: function (router, contact) {
                         router.get('contactController').set('contact', contact);
-                        router.get('applicationController').connectOutlet('contact');
+                        router.get('applicationController').connectOutlet({
+                            viewClass: App.EditContactView,
+                            controller: router.get('contactController'),
+                            context: contact
+                        });
                     },
                     serialize: function (router, contact) {
                         return { "contact_id": contact.get('id') }

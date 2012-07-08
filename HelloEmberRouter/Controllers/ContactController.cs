@@ -16,15 +16,16 @@ namespace HelloEmberRouter.Controllers
         private SomeDBContext db = new SomeDBContext();
 
         // GET api/Contact
-        public IEnumerable<Contact> GetContacts()
+        public IQueryable<Contact> GetContacts()
         {
-            return db.Contacts.AsEnumerable();
+            var contacts = db.Contacts.Where(c => !c.Deleted).AsQueryable();
+            return contacts;
         }
 
         // GET api/Contact/5
         public Contact GetContact(int id)
         {
-            Contact contact = db.Contacts.Find(id);
+            Contact contact = db.Contacts.Where(c => (!c.Deleted) && (c.Id.Equals(id))).SingleOrDefault();
             if (contact == null)
             {
                 throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
@@ -83,11 +84,9 @@ namespace HelloEmberRouter.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound);
             }
-
-            db.Contacts.Remove(contact);
-
             try
             {
+                contact.Deleted = true;
                 db.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)

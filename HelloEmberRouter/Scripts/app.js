@@ -182,6 +182,7 @@ $(function () {
                 },
                 complete: function (x) {
                     _self.set('isLoaded', true);
+                    App.Router.transitionTo('root.contacts.index');
                 }
             });
         }
@@ -235,6 +236,18 @@ $(function () {
                         var contact = context.context;
                         router.transitionTo('edit', contact);
                     },
+                    contactRemove: function (router, context) {
+                        var contact = context.context;
+                        if (confirm("Are you sure you want to remove %@ from your contact list?".fmt(contact.get('fullName')))) {
+                            router.get('contactController').remove(contact.get('id'));
+                        }
+                        router.get('contactsController').findAll();
+                        router.transitionTo('contacts.index');
+                    },
+                    contactAdd: function (router, context) {
+                        var contact = App.ContactModel.create();
+                        router.transitionTo('add', contact)
+                    },
                     connectOutlets: function (router, context) {
                         router.get('contactsController').findAll();
                         router.get('applicationController').connectOutlet('contacts', router.get('contactsController').content);
@@ -245,7 +258,6 @@ $(function () {
                     view: App.ContactView,
                     connectOutlets: function (router, contact) {
                         router.get('contactController').set('contact', contact);
-                        router.get('contactController').set('isLoaded', true);
                         router.get('applicationController').connectOutlet('contact');
                     },
                     serialize: function (router, contact) {
@@ -260,7 +272,6 @@ $(function () {
                     viewClass: App.EditContactView,
                     connectOutlets: function (router, contact) {
                         router.get('contactController').set('contact', contact);
-                        router.get('contactController').set('isLoaded', true);
                         router.get('applicationController').connectOutlet('contact');
                     },
                     serialize: function (router, contact) {
@@ -269,7 +280,16 @@ $(function () {
                     deserialize: function (router, params) {
                         return router.get('contactController').find(params["contact_id"]);
                     }
+                }),
+                add: Ember.Route.extend({
+                    route: '/add',
+                    viewClass: App.AddContactView,
+                    connectOutlets: function (router, contact) {
+                        router.get('contactController').set('contact', contact);
+                        router.get('applicationController').connectOutlet('contact');
+                    }
                 })
+
             })
         })
     });

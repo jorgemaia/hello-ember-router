@@ -1,5 +1,7 @@
 ﻿        <script type="text/x-handlebars" data-template-name="application">
-            <h1>My Ember Application</h1>
+            <h1>Hello Ember.Router!</h1>
+            <h4>Sample app for learning purposes</h4>
+            <img src="../../Images/banner.png" width="400" heigth="200" border="1" /> 
             {{view App.NavbarView controllerBinding="controller.controllers.navbarController"}}
             <br /><hr />
             <div class="content">
@@ -11,7 +13,7 @@
             <ul>
                 <li><a href="#" {{action gotoHome}}>Home</a></li>
                 <li><a href="#" {{action gotoContacts}}>Contacts</a></li>
-            </ul>
+            </ul><br />
         </script>
 
         <script type="text/x-handlebars" data-template-name="contact-table">
@@ -26,7 +28,7 @@
                 <tfoot>
                     <tr>
                         <td colspan="3">
-                            <a href="#">New</a>
+                            <a href="#" {{action contactAdd}}>New</a>
                         <td>
                     </tr>
                 </tfoot>
@@ -57,7 +59,7 @@
                 <td>
                     <a href="#" {{action contactDetails context="contact"}}>Details</a> | 
                     <a href="#" {{action contactEdit context="contact"}}>Edit</a> | 
-                    <a href="#" {{action contactContact}}>Delete</a>
+                    <a href="#" {{action contactRemove context="contact"}}>Delete</a>
                 </td>
             </tr>
         </script>
@@ -65,33 +67,34 @@
         <script type="text/x-handlebars" data-template-name="home">
             <h2>Welcome</h2>
             <br />
-            <img src="http://emberjs.com/images/about/ember-productivity-sm.png" alt="ember logo" />
-            <br />
-            <br />
             <p>Bacon ipsum dolor sit amet qui ullamco exercitation, shankle beef sed bacon ground round kielbasa in. Prosciutto pig bresaola, qui meatloaf ea tongue non dolore et pork belly andouille ribeye spare ribs enim. Enim exercitation elit, brisket nisi ex swine in jerky consequat pastrami dolore sed ad. In drumstick cow, salami swine fatback short ribs ham ut in shankle consequat corned beef id. Deserunt prosciutto beef speck. Sirloin incididunt kielbasa excepteur irure.</p>
 
-<p>Do beef ribs dolore swine chicken shankle, venison officia qui magna ea anim. Jerky shank shankle, tongue in pork loin commodo boudin elit cupidatat turducken id capicola meatball. Strip steak ham hock tenderloin, id chicken drumstick sint jerky. Dolore veniam cillum minim, pariatur est beef. Sunt fatback tri-tip ex chuck.</p>
+            <p>Do beef ribs dolore swine chicken shankle, venison officia qui magna ea anim. Jerky shank shankle, tongue in pork loin commodo boudin elit cupidatat turducken id capicola meatball. Strip steak ham hock tenderloin, id chicken drumstick sint jerky. Dolore veniam cillum minim, pariatur est beef. Sunt fatback tri-tip ex chuck.</p>
+
+            <p>Bacon ipsum dolor sit amet qui ullamco exercitation, shankle beef sed bacon ground round kielbasa in. Prosciutto pig bresaola, qui meatloaf ea tongue non dolore et pork belly andouille ribeye spare ribs enim. Enim exercitation elit, brisket nisi ex swine in jerky consequat pastrami dolore sed ad. In drumstick cow, salami swine fatback short ribs ham ut in shankle consequat corned beef id. Deserunt prosciutto beef speck. Sirloin incididunt kielbasa excepteur irure.</p>
+
+            <p>Do beef ribs dolore swine chicken shankle, venison officia qui magna ea anim. Jerky shank shankle, tongue in pork loin commodo boudin elit cupidatat turducken id capicola meatball. Strip steak ham hock tenderloin, id chicken drumstick sint jerky. Dolore veniam cillum minim, pariatur est beef. Sunt fatback tri-tip ex chuck.</p>
             <br />
             <br />
             <strong>Note</strong>: This is a basic template with no <i>bindings</i>
         </script>
 
-<script type="text/x-handlebars" data-template-name="contact-details">
-    {{#if controller.isLoaded}} 
-        <img {{bindAttr src="contact.imageUrl" alt="contact.fullName" title="contact.fullName"}} width="210" height="240" /><br />
-        <strong>{{contact.fullName}}</strong><br />
-        <strong>{{contact.alias}}</strong>
-    {{else}}
-        <img src="http://img256.imageshack.us/img256/4407/ajaxloading1.gif" alt="" /> Loading...
-    {{/if}}
-</script>
+        <script type="text/x-handlebars" data-template-name="contact-details">
+            {{#if controller.isLoaded}} 
+                <img {{bindAttr src="contact.imageUrl" alt="contact.fullName" title="contact.fullName"}} width="210" height="240" /><br />
+                <strong>{{contact.fullName}}</strong><br />
+                <strong>{{contact.alias}}</strong>
+            {{else}}
+                <img src="http://img256.imageshack.us/img256/4407/ajaxloading1.gif" alt="" /> Loading...
+            {{/if}}
+        </script>
 
-<script type="text/x-handlebars" data-template-name="contact-edit">
-    edit contact<br />
-    First Name: <input type="text" id="txtFirstName" {{bindAttr value="contact.firstName"}}<br />
-    Lasst Name: <input type="text" id="txtLastName" {{bindAttr value="contact.lastName"}}<br />
-    Email: <input type="text" id="txtEmail" {{bindAttr value="contact.email"}}<br />
-</script>
+        <script type="text/x-handlebars" data-template-name="contact-edit">
+            edit contact<br />
+            First Name: <input type="text" id="txtFirstName" {{bindAttr value="contact.firstName"}}<br />
+            Lasst Name: <input type="text" id="txtLastName" {{bindAttr value="contact.lastName"}}<br />
+            Email: <input type="text" id="txtEmail" {{bindAttr value="contact.email"}}<br />
+        </script>
 
         <script type="text/x-handlebars" data-template-name="contact-add">
             add contact

@@ -20,5 +20,6 @@ namespace HelloEmberRouter.Models
         public string Website { get; set; }
         public string Twitter { get; set; }
         public string Facebook { get; set; }
+        public bool Deleted { get; set; }
     }
 }

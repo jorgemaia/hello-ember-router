@@ -131,14 +131,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201207050803434_Init.cs" />
-    <Compile Include="Migrations\201207050803434_Init.Designer.cs">
-      <DependentUpon>201207050803434_Init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201207050814472_EmailTurnsAlias.cs" />
-    <Compile Include="Migrations\201207050814472_EmailTurnsAlias.Designer.cs">
-      <DependentUpon>201207050814472_EmailTurnsAlias.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\SomeDBContext.cs" />
@@ -174,6 +166,9 @@
     <Content Include="Content\themes\base\jquery.ui.theme.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Images\aspnet.png" />
+    <Content Include="Images\banner.png" />
+    <Content Include="Images\ember.png" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\ember-data.js" />
     <Content Include="Scripts\ember.js" />

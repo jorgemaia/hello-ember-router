@@ -25,6 +25,9 @@ $(function () {
         alias: null,
         imageUrl: null,
         twitter: null,
+        twitterLink: function() {
+            return 'https://twitter.com/#!/%@'.fmt(this.twitter);
+        }.property('twitter'),
         facebook: null,
         website: null,
         fullName: function () {
@@ -69,7 +72,7 @@ $(function () {
                             alias: (this.Alias === '' ? ' - ' : this.Alias),
                             website: (this.Website === null ? ' - ' : this.Website),
                             facebook: (this.Facebook === null ? ' - ' : this.Facebook),
-                            twitter: (this.Twitter === '' ? null : 'https://twitter.com/#!/%@'.fmt(this.Twitter))
+                            twitter: (this.Twitter === '' ? null : this.Twitter)
                         }));
                     });
                 },
@@ -108,7 +111,7 @@ $(function () {
                             alias: (this.Alias === '' ? ' - ' : this.Alias),
                             website: (this.Website === null ? ' - ' : this.Website),
                             facebook: (this.Facebook === null ? ' - ' : this.Facebook),
-                            twitter: (this.Twitter === '' ? null : 'https://twitter.com/#!/%@'.fmt(this.Twitter))
+                            twitter: (this.Twitter === '' ? null : this.Twitter)
                         });
                     });
                     _self.set('contact', contact);

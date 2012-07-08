@@ -51,9 +51,9 @@
         <script type="text/x-handlebars" data-template-name="contact-table-row">
             <tr>
                 <td>
-                    <img {{bindAttr src="contact.imageUrl" alt="contact.fullName" title="contact.fullName"}} width="50" height="50" /><br />{{contact.fullName}}
+                    <img {{bindAttr src="contact.imageUrl" alt="contact.fullName" title="contact.alias"}} width="50" height="50" /><br />{{contact.fullName}}
                 </td>
-                <td>
+                <td> 
                     Twitter: {{#if contact.twitter}}<a {{bindAttr href="contact.twitter"}} target='_blank'>Follow on Twitter</a>{{else}}-{{/if}}<br />
                 </td>
                 <td>
@@ -81,19 +81,88 @@
 
         <script type="text/x-handlebars" data-template-name="contact-details">
             {{#if controller.isLoaded}} 
-                <img {{bindAttr src="contact.imageUrl" alt="contact.fullName" title="contact.fullName"}} width="210" height="240" /><br />
-                <strong>{{contact.fullName}}</strong><br />
-                <strong>{{contact.alias}}</strong>
+                 <fieldset>
+                <legend>Edit Contact</legend>
+                <div style="position: relative">
+                    <div style="float: left">
+                        <img {{bindAttr src="contact.imageUrl" alt="contact.fullName" title="contact.fullName"}} width="210" height="240" />
+                    </div>
+                    <div style="float: left">
+                        <table>
+                            <tr>
+                                <td>First Name: </td>
+                                <td>{{contact.firstName}}</td>
+                            </tr>
+                            <tr>
+                                <td>Last Name: </td>
+                                <td>{{contact.lastName}}</td>
+                            </tr>
+                            <tr>
+                                <td>Alias: </td>
+                                <td>{{contact.alias}}</td>
+                            </tr>
+                            <tr>
+                                <td>Website: </td>
+                                <td>{{contact.website}}</td>
+                            </tr>
+                            <tr>
+                                <td>Facebook: </td>
+                                <td>{{contact.facebook}}</td>
+                            </tr>
+                            <tr>
+                                <td>Twitter: </td>
+                                <td>{{contact.twitter}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </fieldset>
             {{else}}
                 <img src="http://img256.imageshack.us/img256/4407/ajaxloading1.gif" alt="" /> Loading...
             {{/if}}
         </script>
 
         <script type="text/x-handlebars" data-template-name="contact-edit">
-            edit contact<br />
-            First Name: <input type="text" id="txtFirstName" {{bindAttr value="contact.firstName"}}<br />
-            Lasst Name: <input type="text" id="txtLastName" {{bindAttr value="contact.lastName"}}<br />
-            Email: <input type="text" id="txtEmail" {{bindAttr value="contact.email"}}<br />
+            <fieldset>
+                <legend>Edit Contact</legend>
+                <div style="position: relative">
+                    <div style="float: left">
+                        <img {{bindAttr src="contact.imageUrl" alt="contact.fullName" title="contact.fullName"}} width="210" height="240" />
+                    </div>
+                    <div style="float: left">
+                        <table>
+                            <tr>
+                                <td>Image Url: </td>
+                                <td>{{view Ember.TextField valueBinding="contact.imageUrl" placeHolder="Image Url goes here"}}</td>
+                            </tr>
+                            <tr>
+                                <td>First Name: </td>
+                                <td>{{view Ember.TextField valueBinding="contact.firstName" placeHolder="First name goes here"}}</td>
+                            </tr>
+                            <tr>
+                                <td>Last Name: </td>
+                                <td>{{view Ember.TextField valueBinding="contact.lastName" placeHolder="Last name goes here"}}</td>
+                            </tr>
+                            <tr>
+                                <td>Alias: </td>
+                                <td>{{view Ember.TextField valueBinding="contact.alias" placeHolder="E=Mail goes here"}}</td>
+                            </tr>
+                            <tr>
+                                <td>Website: </td>
+                                <td>{{view Ember.TextField valueBinding="contact.website" placeHolder="Website Url goes here"}}</td>
+                            </tr>
+                            <tr>
+                                <td>Facebook: </td>
+                                <td>{{view Ember.TextField valueBinding="contact.facebook" placeHolder="Facebook Link goes here"}}</td>
+                            </tr>
+                            <tr>
+                                <td>Twitter: </td>
+                                <td>{{view Ember.TextField valueBinding="contact.twitter" placeHolder="Twitter ID goes here"}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </fieldset>
         </script>
 
         <script type="text/x-handlebars" data-template-name="contact-add">

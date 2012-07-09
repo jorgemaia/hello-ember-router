@@ -23,7 +23,7 @@ $(function () {
         firstName: null,
         lastName: null,
         alias: null,
-        imageUrl: null,
+        imageUrl: 'http://img580.imageshack.us/img580/8577/unknownlg.jpg',
         twitter: null,
         twitterLink: function() {
             return 'https://twitter.com/#!/%@'.fmt(this.twitter);
@@ -71,13 +71,13 @@ $(function () {
         }.property('@each'),
         findAll: function () {
             var _self = this;
-            _self.set('content', []);
             _self.set('isLoaded', false);
             $.ajax({
                 url: this.resourceUrl.fmt(''),
                 type: 'GET',
                 contentType: 'application/json; charset=utf-8',
                 success: function (data) {
+                    _self.set('content', []);
                     $(data).each(function () {
                         _self.pushObject(App.ContactModel.create({
                             id: this.Id,
@@ -154,21 +154,19 @@ $(function () {
                 contentType: 'application/json; charset=utf-8',
                 success: function (data) {
                     console.log('record updated');
+                    _self.set('contact', contact);
+                    _self.set('isLoaded', true);
                 },
                 error: function (xhr, text, error) {
                     console.log('contact-update -> error: %@'.fmt(text));
-                },
-                complete: function (x) {
-                    _self.set('isLoaded', true);
                 }
             });
         },
         add: function (contact) {
             var _self = this;
-            _self.set('contact', []);
             _self.set('isLoaded', false);
             $.ajax({
-                url: this.resourceUrl.fmt(id),
+                url: this.resourceUrl.fmt(''),
                 data: JSON.stringify(contact),
                 type: 'POST',
                 contentType: 'application/json; charset=utf-8',
@@ -185,7 +183,6 @@ $(function () {
         },
         remove: function (id) {
             var _self = this;
-            _self.set('contact', []);
             _self.set('isLoaded', false);
             $.ajax({
                 url: this.resourceUrl.fmt(id),
@@ -193,6 +190,7 @@ $(function () {
                 contentType: 'application/json; charset=utf-8',
                 success: function (data) {
                     console.log('record deleted');
+                    _self.set('contact', null);
                 },
                 error: function (xhr, text, error) {
                     console.log('contact-remove -> error: %@'.fmt(text));
@@ -257,6 +255,7 @@ $(function () {
                         var contact = context.context;
                         if (confirm("Are you sure you want to remove %@ from your contact list?".fmt(contact.get('fullName')))) {
                             router.get('contactController').remove(contact.get('id'));
+                            router.get('contactsController').findAll();
                         }
                     },
                     contactAdd: function (router, context) {
@@ -295,11 +294,13 @@ $(function () {
                     submitUpdateContact: function(router, context) {
                         var contact = context.context;
                         router.get('contactController').update(contact.get('id'), contact);
+                        router.get('contactsController').findAll();
                         router.transitionTo('root.contacts.index');
                     },
                     submitRemoveContact: function (router, context) {
                         var contact = context.context;
                         router.get('contactController').remove(contact.get('id'));
+                        router.get('contactsController').findAll();
                         router.transitionTo('root.contacts.index');
                     },
                     serialize: function (router, contact) {
@@ -313,8 +314,19 @@ $(function () {
                     route: '/add',
                     viewClass: App.AddContactView,
                     connectOutlets: function (router, contact) {
-                        router.get('contactController').set('contact', contact);
-                        router.get('applicationController').connectOutlet('contact');
+                        var c = App.ContactModel.create();
+                        router.get('contactController').set('contact', c);
+                        router.get('applicationController').connectOutlet({
+                            viewClass: App.AddContactView,
+                            controller: router.get('contactController'),
+                            context: c
+                        });
+                    },
+                    submitAddContact: function (router, context) {
+                        var contact = context.context;
+                        router.get('contactController').add(contact);
+                        router.get('contactsController').findAll();
+                        router.transitionTo('root.contacts.index');
                     }
                 })
 

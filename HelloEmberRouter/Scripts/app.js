@@ -65,6 +65,9 @@ $(function () {
     App.ContactsController = Ember.ArrayController.extend({
         content: [],
         isLoaded: false,
+        isEmptyCollection: function() {
+            return this.content.length === 0;
+        }.property('@each'),
         resourceUrl: '/api/contact/%@',
         contactsCount: function() {
             return this.content.length;
@@ -253,10 +256,20 @@ $(function () {
                     },
                     contactRemove: function (router, context) {
                         var contact = context.context;
-                        if (confirm("Are you sure you want to remove %@ from your contact list?".fmt(contact.get('fullName')))) {
-                            router.get('contactController').remove(contact.get('id'));
-                            router.get('contactsController').findAll();
-                        }
+                        Bootstrap.ModalPane.popup({
+                            heading: "Remove Contact",
+                            message: "Are you sure you want to remove %@ from your contact list?".fmt(contact.get('fullName')),
+                            primary: "OK",
+                            secondary: "Cancel",
+                            showBackdrop: true,
+                            callback: function (opts, event) {
+                                if (opts.primary) {
+                                    router.get('contactController').remove(contact.get('id'));
+                                    router.get('contactsController').findAll();
+                                }
+                                event.preventDefault();
+                            }
+                        });
                     },
                     contactAdd: function (router, context) {
                         var contact = App.ContactModel.create();

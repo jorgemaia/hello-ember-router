@@ -137,6 +137,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\prettify.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -170,11 +172,13 @@
     <Content Include="Images\banner.png" />
     <Content Include="Images\ember.png" />
     <Content Include="Scripts\app.js" />
+    <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\ember-data.js" />
     <Content Include="Scripts\ember.js" />
     <Content Include="Scripts\handlebars.js" />
     <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\modernizr-2.0.6-development-only.js" />
+    <Content Include="Scripts\prettify.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

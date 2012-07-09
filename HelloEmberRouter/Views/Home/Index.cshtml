@@ -49,9 +49,13 @@
                 </tfoot>
                 <tbody>
                 {{#if controller.isLoaded}} 
-                    {{#each contact in controller}}
-                        {{view App.ContactListItemView contactBinding="contact"}}
-                    {{/each}}
+                    {{#if isEmptyCollection}}
+                        You don't have any contacts :(
+                    {{else}}
+                        {{#each contact in controller}}
+                            {{view App.ContactListItemView contactBinding="contact"}}
+                        {{/each}}
+                    {{/if}}
                 {{else}}
                     <tr>
                         <td colspan="3">

@@ -11,14 +11,20 @@ namespace HelloEmberRouter.Models
         [Key]
         public int Id { get; set; }
         [Required]
+        [StringLength(30, MinimumLength = 2)]
         public string FirstName { get; set; }
         [Required]
+        [StringLength(30, MinimumLength = 2)]
         public string LastName { get; set; }
-        [StringLength(120)]
+        [StringLength(30)]
         public string Alias { get; set; }
+        [StringLength(120)]
         public string ImageUrl { get; set; }
+        [StringLength(120)]
         public string Website { get; set; }
+        [StringLength(30)]
         public string Twitter { get; set; }
+        [StringLength(80)]
         public string Facebook { get; set; }
         public bool Deleted { get; set; }
     }

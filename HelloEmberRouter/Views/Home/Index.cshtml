@@ -54,7 +54,7 @@
                     <img {{bindAttr src="contact.imageUrl" alt="contact.fullName" title="contact.alias"}} width="50" height="50" /><br />{{contact.fullName}}
                 </td>
                 <td> 
-                    Twitter: {{#if contact.twitter}}<a {{bindAttr href="contact.twitter"}} target='_blank'>Follow on Twitter</a>{{else}}-{{/if}}<br />
+                    Twitter: {{#if contact.twitter}}<a {{bindAttr href="contact.twitterLink"}} target='_blank'>Follow on Twitter</a>{{else}}-{{/if}}<br />
                 </td>
                 <td>
                     <a href="#" {{action contactDetails context="contact"}}>Details</a> | 
@@ -111,7 +111,7 @@
                             </tr>
                             <tr>
                                 <td>Twitter: </td>
-                                <td>{{contact.twitter}}</td>
+                                <td>{{#if contact.twitter}}<a {{bindAttr href="contact.twitterLink"}} target="_blank">{{contact.twitter}}</a>{{else}}-{{/if}}</td>
                             </tr>
                         </table>
                     </div>
@@ -128,6 +128,10 @@
                 <div style="position: relative">
                     <div style="float: left">
                         <img {{bindAttr src="contact.imageUrl" alt="contact.fullName" title="contact.fullName"}} width="210" height="240" />
+                        <br /><br />
+                        <input type="button" onclick="history.go(-1);" value="Back" /> 
+                        <input type="button" {{action submitUpdateContact on="click" context="contact"}} value="Update" /> 
+                        <input type="button" {{action submitRemoveContact on="click" context="contact"}} value="Delete" />
                     </div>
                     <div style="float: left">
                         <table>

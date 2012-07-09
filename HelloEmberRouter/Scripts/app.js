@@ -35,16 +35,31 @@ $(function () {
         }.property('firstName', 'lastName'),
         toJSON : function() {
             return {
-                Id: this.id,
-                FirstName: this.firstName,
-                LastName: this.lastName,
-                Alias: this.alias,
-                ImageUrl: this.imageUrl,
-                Twitter: this.twitter,
-                Facebook: this.facebook,
-                Website: this.website
+                Id: this.get("id"),
+                FirstName: this.get("firstName"),
+                LastName: this.get("lastName"),
+                Alias: this.get("alias"),
+                ImageUrl: this.get("imageUrl"),
+                Twitter: this.get("twitter"),
+                Facebook: this.get("facebook"),
+                Website: this.get("website")
             };
-         }
+        },
+        twitterLink: function() {
+            return 'https://twitter.com/%@'.fmt(this.get('twitter'));
+        }.property('twitter'),
+        makeCopy: function () {
+            return App.ContactModel.create({
+                id: this.id,
+                firstName: this.get("firstName"),
+                lastName: this.get("lastName"),
+                imageUrl: this.get("imageUrl"),
+                alias: this.get("alias"),
+                website: this.get("website"),
+                facebook: this.get("facebook"),
+                twitter: this.get("twitter")
+            });
+        }
     });
 
     App.ContactsController = Ember.ArrayController.extend({
@@ -116,10 +131,10 @@ $(function () {
                     });
                     _self.set('contact', contact);
                     _self.set('isLoaded', true);
-                    console.log('OKKKK');
+                    console.log('record retrieved');
                 },
                 error: function (xhr, text, error) {
-                    console.log('error: %@'.fmt(text));
+                    console.log('contact-find -> error: %@'.fmt(text));
                 },
                 complete: function (x) {
                     _self.set('isLoaded', true);
@@ -131,7 +146,6 @@ $(function () {
             if (null == contact) {
                 contact = _self.get('contact');
             }
-            _self.set('contact', []);
             _self.set('isLoaded', false);
             $.ajax({
                 url: this.resourceUrl.fmt(id),
@@ -139,10 +153,10 @@ $(function () {
                 type: 'PUT',
                 contentType: 'application/json; charset=utf-8',
                 success: function (data) {
-                    console.log('ok');
+                    console.log('record updated');
                 },
                 error: function (xhr, text, error) {
-                    console.log('error: %@'.fmt(text));
+                    console.log('contact-update -> error: %@'.fmt(text));
                 },
                 complete: function (x) {
                     _self.set('isLoaded', true);
@@ -159,10 +173,10 @@ $(function () {
                 type: 'POST',
                 contentType: 'application/json; charset=utf-8',
                 success: function (data) {
-                    console.log('ok');
+                    console.log('record saved');
                 },
                 error: function (xhr, text, error) {
-                    console.log('error: %@'.fmt(text));
+                    console.log('contact-add -> error: %@'.fmt(text));
                 },
                 complete: function (x) {
                     _self.set('isLoaded', true);
@@ -178,10 +192,10 @@ $(function () {
                 type: 'DELETE',
                 contentType: 'application/json; charset=utf-8',
                 success: function (data) {
-                    console.log('ok');
+                    console.log('record deleted');
                 },
                 error: function (xhr, text, error) {
-                    console.log('error: %@'.fmt(text));
+                    console.log('contact-remove -> error: %@'.fmt(text));
                 },
                 complete: function (x) {
                     _self.set('isLoaded', true);
@@ -236,7 +250,7 @@ $(function () {
                         router.transitionTo('details', contact);
                     },
                     contactEdit: function (router, context) {
-                        var contact = context.context;
+                        var contact = context.context.makeCopy();
                         router.transitionTo('edit', contact);
                     },
                     contactRemove: function (router, context) {
@@ -244,7 +258,6 @@ $(function () {
                         if (confirm("Are you sure you want to remove %@ from your contact list?".fmt(contact.get('fullName')))) {
                             router.get('contactController').remove(contact.get('id'));
                         }
-                        router.get('contactsController').findAll();
                     },
                     contactAdd: function (router, context) {
                         var contact = App.ContactModel.create();
@@ -278,6 +291,16 @@ $(function () {
                             controller: router.get('contactController'),
                             context: contact
                         });
+                    },
+                    submitUpdateContact: function(router, context) {
+                        var contact = context.context;
+                        router.get('contactController').update(contact.get('id'), contact);
+                        router.transitionTo('root.contacts.index');
+                    },
+                    submitRemoveContact: function (router, context) {
+                        var contact = context.context;
+                        router.get('contactController').remove(contact.get('id'));
+                        router.transitionTo('root.contacts.index');
                     },
                     serialize: function (router, contact) {
                         return { "contact_id": contact.get('id') }

@@ -2,6 +2,9 @@ Ember.Router with ASP.NET MVC4 Web API
 ======================================
 --------------------------------------
 
+This is a sample application for LEARNING purposes which is intended to demonstrate how to use Ember.js implemeting route management. 
+The goal is to create a small CRUD implementation to demonstrate common practices of both Ember and Web API.
+
 Note: 
 ====
 This is under development and will probably remain under development forever as new bits are released.
@@ -9,10 +12,8 @@ This is under development and will probably remain under development forever as 
 
 Why?
 =====
-This is a sample application for LEARNING purposes which is intended to demonstrate 
-how to use Ember.js implemeting route management.
+Because .NET people also deserve Ember.js :)
 
-The goal is to create a small CRUD implementation to demonstrate common practices of both Ember and Web API.
 
 Config
 ======

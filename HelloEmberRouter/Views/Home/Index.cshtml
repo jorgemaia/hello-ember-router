@@ -1,34 +1,49 @@
 ﻿        <script type="text/x-handlebars" data-template-name="application">
-            <h1>Hello Ember.Router!</h1>
-            <h4>Sample app for learning purposes</h4>
+            <h2>Hello Ember.Router!</h2>
             <img src="../../Images/banner.png" width="400" heigth="200" border="1" /> 
             {{view App.NavbarView controllerBinding="controller.controllers.navbarController"}}
-            <br /><hr />
+            <br />
+            <hr />
             <div class="content">
                 {{outlet}}
             </div>
         </script>
 
         <script type="text/x-handlebars" data-template-name="navbar">
-            <ul>
-                <li><a href="#" {{action gotoHome}}>Home</a></li>
-                <li><a href="#" {{action gotoContacts}}>Contacts</a></li>
-            </ul><br />
+            <div class="top-left-menu">
+                <ul>
+                    <li><a href="#" {{action gotoHome}}>Home</a></li>
+                    <li><a href="#" {{action gotoContacts}}>Contacts</a></li>
+                </ul>
+            <div><br />
         </script>
 
         <script type="text/x-handlebars" data-template-name="contact-table">
-            <table>
+            <div>
+                <div style="float:left; margin-right: 240px;">
+                    <span class="sctn-title">Contacts</span>
+                </div>
+                <div style="float:left">
+                    <div style="font-size: 9pt; vertical-align: bottom;">
+                        {{controller.contactsCount}} Record(s)
+                    </div>
+                </div>
+                <br />
+            </div>
+            <br />
+            <br />
+            <table id="contacts-table">
                 <thead>
                     <tr>
-                        <th>Contact({{controller.contactsCount}})</th>
-                        <th>Info</th>
+                        <th>Contact</th>
+                        <th>Twitter</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
                         <td colspan="3">
-                            <a href="#" {{action contactAdd}}>New</a>
+                            <a class="bold_link" href="#" {{action contactAdd}}>New</a>
                         <td>
                     </tr>
                 </tfoot>
@@ -50,16 +65,16 @@
 
         <script type="text/x-handlebars" data-template-name="contact-table-row">
             <tr>
-                <td>
+                <td style="vertical-align: top;">
                     <img {{bindAttr src="contact.imageUrl" alt="contact.fullName" title="contact.alias"}} width="50" height="50" /><br />{{contact.fullName}}
                 </td>
                 <td> 
                     Twitter: {{#if contact.twitter}}<a {{bindAttr href="contact.twitterLink"}} target='_blank'>Follow on Twitter</a>{{else}}-{{/if}}<br />
                 </td>
                 <td>
-                    <a href="#" {{action contactDetails context="contact"}}>Details</a> | 
-                    <a href="#" {{action contactEdit context="contact"}}>Edit</a> | 
-                    <a href="#" {{action contactRemove context="contact"}}>Delete</a>
+                    <a href="#" class="bold_link" {{action contactDetails context="contact"}}>Details</a> | 
+                    <a href="#" class="bold_link" {{action contactEdit context="contact"}}>Edit</a> | 
+                    <a href="#" class="bold_link" {{action contactRemove context="contact"}}>Delete</a>
                 </td>
             </tr>
         </script>

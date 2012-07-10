@@ -32,7 +32,7 @@ Technologies
 ============
 - [ASP.MVC 4 Web API](http://www.asp.net/web-api);
 - [SQL Server Express](http://www.microsoft.com/sqlserver/en/us/editions/2012-editions/express.aspx);
-- [EF4.3(NuGet](http://nuget.org/packages/EntityFramework);
+- [EF4.3](http://nuget.org/packages/EntityFramework);
 - [jQuery 1.7.2](http://nuget.org/packages/jquery);
 - [Handlebars 1.0 b6](https://github.com/wycats/handlebars.js/);
 - [Ember 0.9.8.1](https://github.com/emberjs/ember.js)

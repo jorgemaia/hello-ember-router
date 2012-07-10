@@ -24,12 +24,10 @@ The goal is to create a small CRUD implementation to demonstrate common practice
         type="System.Web.Handlers.TransferRequestHandler" 
          preCondition="integratedMode,runtimeVersionv4.0" />`
 
-
 In IIS configuration, follow [this link](http://geekswithblogs.net/michelotti/archive/2011/05/28/resolve-404-in-iis-express-for-put-and-delete-verbs.aspx)
  
 
 **Steps to Run**
-
 
 
  - Before running the application, go to global.asax.cs and set the following line to `Application_Start` method:
@@ -44,8 +42,9 @@ In IIS configuration, follow [this link](http://geekswithblogs.net/michelotti/ar
  - Run the application 
 
   
-Technologies
-============
+**Technologies/Dependencies**
+
+
 - [ASP.MVC 4 Web API](http://www.asp.net/web-api);
 - [SQL Server Express](http://www.microsoft.com/sqlserver/en/us/editions/2012-editions/express.aspx);
 - [EF4.3](http://nuget.org/packages/EntityFramework);

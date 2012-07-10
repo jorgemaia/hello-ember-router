@@ -175,6 +175,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\ember-data.js" />
     <Content Include="Scripts\ember.js" />
+    <Content Include="Scripts\handlebars.helpers.js" />
     <Content Include="Scripts\handlebars.js" />
     <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\modernizr-2.0.6-development-only.js" />

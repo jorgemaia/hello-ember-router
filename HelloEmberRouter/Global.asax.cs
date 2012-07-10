@@ -22,7 +22,7 @@ namespace HelloEmberRouter
         protected void Application_Start()
         {
             //Database.SetInitializer<SomeDBContext>(new DropCreateDatabaseAlways<SomeDBContext>());
-            Database.SetInitializer<SomeDBContext>(new CreateDatabaseIfNotExists<SomeDBContext>());
+            //Database.SetInitializer<SomeDBContext>(new CreateDatabaseIfNotExists<SomeDBContext>());
             Database.SetInitializer<SomeDBContext>(new DropCreateDatabaseIfModelChanges<SomeDBContext>());
             
             AreaRegistration.RegisterAllAreas();

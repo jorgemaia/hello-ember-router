@@ -43,7 +43,7 @@
                 <tfoot>
                     <tr>
                         <td colspan="3">
-                            <a class="bold_link" href="#" {{action contactAdd}}>New</a>
+                            <button {{action contactAdd}}>New</button>
                         <td>
                     </tr>
                 </tfoot>
@@ -100,16 +100,16 @@
 
         <script type="text/x-handlebars" data-template-name="contact-details">
             {{#if controller.isLoaded}} 
-                 <fieldset>
-                <legend>Edit Contact</legend>
+            <fieldset>
+                <legend>Contact Details</legend>
                 <div style="position: relative">
                     <div style="float: left">
                         <img {{bindAttr src="contact.imageUrl" alt="contact.fullName" title="contact.fullName"}} width="210" height="240" />
                         <br /><br />
-                        <input type="button" onclick="history.go(-1);" value="Back" /> 
+                        <input type="button" {{action gotoContacts}} value="Back" /> 
                     </div>
                     <div style="float: left">
-                        <table>
+                        <table id="contacts-table" style="height: 280px">
                             <tr>
                                 <td>First Name: </td>
                                 <td>{{contact.firstName}}</td>
@@ -123,16 +123,16 @@
                                 <td>{{contact.alias}}</td>
                             </tr>
                             <tr>
-                                <td>Website: </td>
-                                <td>{{contact.website}}</td>
+                                <td><img src="../../Images/orderedList0.png" /> Website: </td>
+                                <td>{{#if contact.website}}<a {{bindAttr href="contact.website"}} target="_blank">{{contact.alias}}'s Website</a>{{else}} - {{/if}}</td>
                             </tr>
                             <tr>
-                                <td>Facebook: </td>
-                                <td>{{contact.facebook}}</td>
+                                <td><img src="../../Images/facebook.png" /> Facebook: </td>
+                                <td>{{#if contact.facebook}}<a {{bindAttr href="contact.facebook"}} target="_blank">{{contact.alias}}'s Facebook Profile</a>{{else}} - {{/if}}</td>
                             </tr>
                             <tr>
-                                <td>Twitter: </td>
-                                <td>{{#if contact.twitter}}<a {{bindAttr href="contact.twitterLink"}} target="_blank">{{contact.twitter}}</a>{{else}}-{{/if}}</td>
+                                <td><img src="../../Images/twitter.png" /> Twitter: </td>
+                                <td>{{#if contact.twitter}}<a {{bindAttr href="contact.twitterLink"}} target="_blank">Follow {{contact.alias}} on Twitter</a>{{else}} - {{/if}}</td>
                             </tr>
                         </table>
                     </div>
@@ -150,12 +150,12 @@
                     <div style="float: left">
                         <img {{bindAttr src="contact.imageUrl" alt="contact.fullName" title="contact.fullName"}} width="210" height="240" />
                         <br /><br />
-                        <input type="button" onclick="history.go(-1);" value="Back" /> 
+                        <input type="button" {{action gotoContacts}} value="Back" /> 
                         <input type="button" {{action submitUpdateContact on="click" context="contact"}} value="Update" /> 
                         <input type="button" {{action submitRemoveContact on="click" context="contact"}} value="Delete" />
                     </div>
                     <div style="float: left">
-                        <table>
+                        <table id="contacts-table">
                             <tr>
                                 <td>Image Url: </td>
                                 <td>{{view Ember.TextField valueBinding="contact.imageUrl" placeHolder="Image Url goes here"}}</td>
@@ -201,7 +201,7 @@
                         <input type="button" {{action submitAddContact on="click" context="contact"}} value="Save" /> 
                     </div>
                     <div style="float: left">
-                        <table>
+                        <table id="contacts-table">
                             <tr>
                                 <td>Image Url: </td>
                                 <td>{{view Ember.TextField valueBinding="contact.imageUrl" placeHolder="Image Url goes here"}}</td>

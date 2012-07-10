@@ -33,6 +33,9 @@ $(function () {
         fullName: function () {
             return '%@ %@'.fmt(this.firstName, this.lastName)
         }.property('firstName', 'lastName'),
+        fullNameAlias: function() {
+            return '%@ %@ (%@)'.fmt(this.firstName, this.lastName, this.alias);
+        }.property('firstName', 'lastName', 'alias'),
         toJSON : function() {
             return {
                 Id: this.get("id"),
@@ -64,6 +67,8 @@ $(function () {
 
     App.ContactsController = Ember.ArrayController.extend({
         content: [],
+        currentPage: 1,
+        itemsPerPage: 4,
         isLoaded: false,
         isEmptyCollection: function() {
             return this.content.length === 0;
@@ -186,6 +191,7 @@ $(function () {
         },
         remove: function (id) {
             var _self = this;
+            var _id = id;
             _self.set('isLoaded', false);
             $.ajax({
                 url: this.resourceUrl.fmt(id),
@@ -193,6 +199,9 @@ $(function () {
                 contentType: 'application/json; charset=utf-8',
                 success: function (data) {
                     console.log('record deleted');
+                    App.router.get('contactsController').removeObject(
+                        App.router.get('contactsController').get('content').filterProperty('id', _id)[0]
+                    );
                     _self.set('contact', null);
                 },
                 error: function (xhr, text, error) {
@@ -258,14 +267,13 @@ $(function () {
                         var contact = context.context;
                         Bootstrap.ModalPane.popup({
                             heading: "Remove Contact",
-                            message: "Are you sure you want to remove %@ from your contact list?".fmt(contact.get('fullName')),
+                            message: "Are you sure you want to remove <strong>%@</strong> from your contact list?".fmt(contact.get('fullName') === contact.get('alias') ? contact.get('fullName') : contact.get('fullNameAlias')),
                             primary: "OK",
                             secondary: "Cancel",
                             showBackdrop: true,
                             callback: function (opts, event) {
                                 if (opts.primary) {
                                     router.get('contactController').remove(contact.get('id'));
-                                    router.get('contactsController').findAll();
                                 }
                                 event.preventDefault();
                             }
@@ -307,14 +315,24 @@ $(function () {
                     submitUpdateContact: function(router, context) {
                         var contact = context.context;
                         router.get('contactController').update(contact.get('id'), contact);
-                        router.get('contactsController').findAll();
                         router.transitionTo('root.contacts.index');
                     },
                     submitRemoveContact: function (router, context) {
                         var contact = context.context;
-                        router.get('contactController').remove(contact.get('id'));
-                        router.get('contactsController').findAll();
-                        router.transitionTo('root.contacts.index');
+                        Bootstrap.ModalPane.popup({
+                            heading: "Remove Contact",
+                            message: "Are you sure you want to remove <strong>%@</strong> from your contact list?".fmt(contact.get('fullName') === contact.get('alias') ? contact.get('fullName') : contact.get('fullNameAlias')),
+                            primary: "OK",
+                            secondary: "Cancel",
+                            showBackdrop: true,
+                            callback: function (opts, event) {
+                                if (opts.primary) {
+                                    router.get('contactController').remove(contact.get('id'));
+                                    router.transitionTo('root.contacts.index');
+                                }
+                                event.preventDefault();
+                            }
+                        });
                     },
                     serialize: function (router, contact) {
                         return { "contact_id": contact.get('id') }
@@ -338,7 +356,7 @@ $(function () {
                     submitAddContact: function (router, context) {
                         var contact = context.context;
                         router.get('contactController').add(contact);
-                        router.get('contactsController').findAll();
+                        router.get('contactsController').pushObject(contact);
                         router.transitionTo('root.contacts.index');
                     }
                 })

@@ -23,9 +23,9 @@ namespace HelloEmberRouter.Migrations
                     LastName = "Stark",
                     Alias = "Iron-man",
                     ImageUrl = "http://img513.imageshack.us/img513/492/ironmanln.jpg",
-                    Twitter = "",
-                    Facebook = "",
-                    Website = "",
+                    Twitter = "iron_man_movie",
+                    Facebook = "https://www.facebook.com/ironmanmovie",
+                    Website = "http://ironman.wikia.com/wiki/Iron_Man_Wiki",
                     Deleted = false
                 },
                 new Contact()
@@ -45,8 +45,8 @@ namespace HelloEmberRouter.Migrations
                     LastName = "Odinson",
                     Alias = "Thor",
                     ImageUrl = "http://img13.imageshack.us/img13/7241/thorgjd.jpg",
-                    Twitter = "",
-                    Facebook = "",
+                    Twitter = "Thor_Thunderer",
+                    Facebook = "https://www.facebook.com/ThorMovie",
                     Website = "",
                     Deleted = false
                 },
@@ -105,7 +105,17 @@ namespace HelloEmberRouter.Migrations
                     Facebook = string.Empty,
                     Website = "http://marvel.com/universe/MODOK",
                     Deleted = false
-
+                },
+                new Contact()
+                {
+                    FirstName = "Beta Ray",
+                    LastName = "Bill",
+                    Alias = "Beta Ray Bill",
+                    ImageUrl = "http://img685.imageshack.us/img685/889/ugo50albetabill288x288.jpg",
+                    Twitter = "BetaRayBill_",
+                    Facebook = string.Empty,
+                    Website = "http://marvel.com/universe/Beta_Ray_Bill",
+                    Deleted = false
                 }
             );
 

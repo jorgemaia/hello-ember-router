@@ -16,13 +16,17 @@ The goal is to create a small CRUD implementation to demonstrate common practice
 
  - Open the `applicationHost.config` file located in the directory `%userprofile%\documents\IISExpress\config`.  
  - Scroll down to the bottom of the file and find a handler that looks like this:
-   `<add name="ExtensionlessUrl-Integrated-4.0" path="*." verb="GET,HEAD,POST,DEBUG" 
+```
+<add name="ExtensionlessUrl-Integrated-4.0" path="*." verb="GET,HEAD,POST,DEBUG" 
          type="System.Web.Handlers.TransferRequestHandler" 
-         preCondition="integratedMode,runtimeVersionv4.0" />` 
+         preCondition="integratedMode,runtimeVersionv4.0" />
+``` 
  - Add `PUT` and `DELETE` in the `verb` attribute so your tag now looks like this:
-   `<add name="ExtensionlessUrl-Integrated-4.0" path="*." verb="GET,HEAD,POST,DEBUG,PUT,DELETE" 
+```
+<add name="ExtensionlessUrl-Integrated-4.0" path="*." verb="GET,HEAD,POST,DEBUG,PUT,DELETE" 
         type="System.Web.Handlers.TransferRequestHandler" 
-         preCondition="integratedMode,runtimeVersionv4.0" />`
+         preCondition="integratedMode,runtimeVersionv4.0" />
+```
 
 In IIS configuration, follow [this link](http://geekswithblogs.net/michelotti/archive/2011/05/28/resolve-404-in-iis-express-for-put-and-delete-verbs.aspx)
  

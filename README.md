@@ -21,8 +21,11 @@ Config
    `Database.SetInitializer<SomeDBContext>(new CreateDatabaseIfNotExists<SomeDBContext>());`
  - Change your connection string in the `web.config` file
     `<add name="SomeDBContext" connectionString="CONNECTION STRING GOES HERE" providerName="System.Data.SqlClient" />`
- - Inside the directory `Migrations`, remove all files **except** `Configuration.cs`
- - Run `Update-Database` in the Package-Manager Console
+ - Open the Package Management Console and run the first migration:
+   `Add-Migration init`
+ - Make sure a file has been created in the `Migrations` directory
+ - Still in the PM Console, run the command to update and seed the database
+   `Update-Database` 
 
 
 Technologies

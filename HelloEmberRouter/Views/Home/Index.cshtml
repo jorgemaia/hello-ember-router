@@ -20,20 +20,25 @@
 
         <script type="text/x-handlebars" data-template-name="contact-table">
             <div>
-                <div style="float:left; margin-right: 240px;">
-                    <span class="sctn-title">Contacts</span>
-                </div>
-                <div style="float:left">
-                    <div style="font-size: 9pt; vertical-align: bottom;">
-                        {{controller.contactsCount}} Record(s)
-                    </div>
-                </div>
-                <br />
+                <span class="sctn-title">Contacts</span>
             </div>
             <br />
             <br />
             <table id="contacts-table">
                 <thead>
+                    <tr>
+                        <td colspan="3">
+                            <div>
+                                <div style="float:left;font-size: 9pt; vertical-align: bottom;">
+                                    {{controller.contactsCount}} Record(s)
+                                </div>
+                                <div>
+                                    <td colspan="3"><input type="button" {{action contactAdd}} value="New" /></td>
+                                </div>
+                                <br />
+                            </div>
+                        </td>
+                    </tr>
                     <tr>
                         <th>Contact</th>
                         <th>Twitter</th>
@@ -43,7 +48,7 @@
                 <tfoot>
                     <tr>
                         <td colspan="3">
-                            <button {{action contactAdd}}>New</button>
+                            <input type="button" {{action contactAdd}} value="New" />
                         <td>
                     </tr>
                 </tfoot>
@@ -76,9 +81,9 @@
                     Twitter: {{#if contact.twitter}}<a {{bindAttr href="contact.twitterLink"}} target='_blank'>Follow on Twitter</a>{{else}}-{{/if}}<br />
                 </td>
                 <td>
-                    <a href="#" class="bold_link" {{action contactDetails context="contact"}}>Details</a> | 
-                    <a href="#" class="bold_link" {{action contactEdit context="contact"}}>Edit</a> | 
-                    <a href="#" class="bold_link" {{action contactRemove context="contact"}}>Delete</a>
+                    <input type="button" {{action contactDetails context="contact"}} value="Details"/> |
+                    <input type="button" {{action contactEdit context="contact"}} value="Edit"/> |
+                    <input type="button" {{action contactRemove context="contact"}} value="Remove" />
                 </td>
             </tr>
         </script>
@@ -192,7 +197,7 @@
 
         <script type="text/x-handlebars" data-template-name="contact-add">
             <fieldset>
-                <legend>Edit Contact</legend>
+                <legend>Add Contact</legend>
                 <div style="position: relative">
                     <div style="float: left">
                         <img {{bindAttr src="contact.imageUrl" alt="contact.fullName" title="contact.fullName"}} width="210" height="240" />

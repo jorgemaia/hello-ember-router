@@ -151,6 +151,7 @@ $(function () {
         },
         update: function (id, contact) {
             var _self = this;
+            var _id = id;
             if (null == contact) {
                 contact = _self.get('contact');
             }
@@ -163,6 +164,9 @@ $(function () {
                 success: function (data) {
                     console.log('record updated');
                     _self.set('contact', contact);
+
+                    App.router.get('contactsController').get('content').filterProperty('id', _id)[0] = contact;
+                    
                     _self.set('isLoaded', true);
                 },
                 error: function (xhr, text, error) {
@@ -180,6 +184,7 @@ $(function () {
                 contentType: 'application/json; charset=utf-8',
                 success: function (data) {
                     console.log('record saved');
+                    App.router.get('contactsController').pushObject(contact);
                 },
                 error: function (xhr, text, error) {
                     console.log('contact-add -> error: %@'.fmt(text));
@@ -267,7 +272,7 @@ $(function () {
                         var contact = context.context;
                         Bootstrap.ModalPane.popup({
                             heading: "Remove Contact",
-                            message: "Are you sure you want to remove <strong>%@</strong> from your contact list?".fmt(contact.get('fullName') === contact.get('alias') ? contact.get('fullName') : contact.get('fullNameAlias')),
+                            message: "Are you sure you want to remove <strong>%@</strong> from your contact list?".fmt(((null == contact.get('alias') || ('' == contact.get('alias'))) ? contact.get('fullName') : contact.get('fullName') === contact.get('alias') ? contact.get('fullName') : contact.get('fullNameAlias'))),
                             primary: "OK",
                             secondary: "Cancel",
                             showBackdrop: true,
@@ -321,7 +326,7 @@ $(function () {
                         var contact = context.context;
                         Bootstrap.ModalPane.popup({
                             heading: "Remove Contact",
-                            message: "Are you sure you want to remove <strong>%@</strong> from your contact list?".fmt(contact.get('fullName') === contact.get('alias') ? contact.get('fullName') : contact.get('fullNameAlias')),
+                            message: "Are you sure you want to remove <strong>%@</strong> from your contact list?".fmt(((null == contact.get('alias') || ('' == contact.get('alias'))) ? contact.get('fullName') : contact.get('fullName') === contact.get('alias') ? contact.get('fullName') : contact.get('fullNameAlias'))),
                             primary: "OK",
                             secondary: "Cancel",
                             showBackdrop: true,

@@ -67,6 +67,6 @@ C:\Users\Thiago\Documents\GitHub\ember-router-with-webapi\HelloEmberRouter\bin\S
 C:\Users\Thiago\Documents\GitHub\ember-router-with-webapi\HelloEmberRouter\bin\System.Web.WebPages.xml
 C:\Users\Thiago\Documents\GitHub\ember-router-with-webapi\HelloEmberRouter\bin\System.Web.WebPages.Deployment.xml
 C:\Users\Thiago\Documents\GitHub\ember-router-with-webapi\HelloEmberRouter\bin\System.Web.WebPages.Razor.xml
-C:\Users\Thiago\Documents\GitHub\ember-router-with-webapi\HelloEmberRouter\obj\Debug\HelloEmberRouter.csprojResolveAssemblyReference.cache
 C:\Users\Thiago\Documents\GitHub\ember-router-with-webapi\HelloEmberRouter\obj\Debug\HelloEmberRouter.dll
 C:\Users\Thiago\Documents\GitHub\ember-router-with-webapi\HelloEmberRouter\obj\Debug\HelloEmberRouter.pdb
+C:\Users\Thiago\Documents\GitHub\ember-router-with-webapi\HelloEmberRouter\obj\Debug\HelloEmberRouter.csprojResolveAssemblyReference.cache

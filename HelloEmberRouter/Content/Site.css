@@ -16,97 +16,100 @@ body {
 
 .sctn-title {
     font-style: italic;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman' , serif;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 26pt;
     font-weight: bold;
 }
 
 .top-left-menu {
-   float:left;
-   width:100%;
-   background:#fff;
-   overflow:hidden;
-   position:relative;
+    float: left;
+    width: 100%;
+    background: #fff;
+    overflow: hidden;
+    position: relative;
 }
-.top-left-menu ul {
-   clear:left;
-   float:left;
-   list-style:none;
-   margin:0;
-   padding:0;
-   position:relative;
-   text-align:left;
-}
-.top-left-menu ul li {
-   display:block;
-   float:left;
-   list-style:none;
-   margin:0;
-   padding:0;
-   position:relative;
-}
-.top-left-menu ul li a {
-   display:block;
-   margin:0 0 0 1px;
-   padding:3px 10px;
-   background:#ddd;
-   color:#000;
-   text-decoration:none;
-   line-height:1.3em;
-}
-.top-left-menu ul li a:hover {
-   background:#369;
-   color:#fff;
-}
-.top-left-menu ul li a.active,
-.top-left-menu ul li a.active:hover {
-   color:#fff;
-   background:#000;
-   font-weight:bold;
-}
+
+    .top-left-menu ul {
+        clear: left;
+        float: left;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        text-align: left;
+    }
+
+        .top-left-menu ul li {
+            display: block;
+            float: left;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+
+            .top-left-menu ul li a {
+                display: block;
+                margin: 0 0 0 1px;
+                padding: 3px 10px;
+                background: #ddd;
+                color: #000;
+                text-decoration: none;
+                line-height: 1.3em;
+            }
+
+                .top-left-menu ul li a:hover {
+                    background: #369;
+                    color: #fff;
+                }
+
+                .top-left-menu ul li a.active,
+                .top-left-menu ul li a.active:hover {
+                    color: #fff;
+                    background: #000;
+                    font-weight: bold;
+                }
 
 a {
     text-decoration: none;
     color: #003399;
 }
-a:hover {
-    text-decoration: underline;
-}
+
+    a:hover {
+        text-decoration: underline;
+    }
 
 .bold_link {
     font-weight: bold;
     font-size: 10pt;
 }
 
-
 #contacts-table {
-    font-family: "Lucida Sans Unicode" , "Lucida Grande" , Sans-Serif;
-    font-size: 11px;
-    margin: 5px;
-    width: 480px;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 12px;
+    width:min-content;
     text-align: left;
+    border-collapse: initial;
     border: 1px solid #69c;
-    background-color: #E1ECE7;
-}
-#contacts-table th
-{
-	padding: 10px 5px 5px 5px;
-	font-weight: bold;
-	font-size: 14px;
-	color: #039;
-}
-#contacts-table tbody
-{
-	background: #e8edff;
-}
-#contacts-table td
-{
-	color: #669;
-	border-top: 1px dashed #fff;
+    margin: 10px;
 }
 
-#contacts-table tbody tr:hover td
-{
-	color: #339;
-	background: #d0dafd;
+    #contacts-table th {
+    font-weight: normal;
+    font-size: 14px;
+    color: #039;
+    border-bottom: 1px dashed #69c;
+    padding: 12px 17px;
+    background-color: #E4EFEF;
 }
+
+    #contacts-table td {
+        color: #669;
+        padding-left: 10px;
+        padding-top: 10px;
+    }
+
+    #contacts-table tbody tr:hover td {
+        color: #339;
+        background: #d0dafd;
+    }

@@ -39,6 +39,16 @@ namespace HelloEmberRouter.Migrations
                     Website = "http://www.imdb.com/title/tt0948470/",
                     Deleted = false
                 },
+                new Contact() {
+                    FirstName = "Thiago",
+                    LastName = "Santos",
+                    Alias = "Milky Way Joe",
+                    ImageUrl = "https://twimg0-a.akamaihd.net/profile_images/1030362795/thiago.PNG",
+                    Twitter = "tsantos83",
+                    Facebook = "",
+                    Website = "",
+                    Deleted = false
+                },
                 new Contact()
                 {
                     FirstName = "Thor",

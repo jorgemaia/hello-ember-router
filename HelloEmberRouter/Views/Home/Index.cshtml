@@ -18,6 +18,16 @@
             <div><br />
         </script>
 
+        <script type="text/x-handlebars" data-template-name="generic-error">
+            <h1>Fail</h1>
+            <img src="../../Images/fail.jpg" />
+        </script>
+
+        <script type="text/x-handlebars" data-template-name="error-404">
+            <h1>404 Error: FAILL!!1</h1>
+            <img src="../../Images/404-error.jpg" />
+        </script>
+
         <script type="text/x-handlebars" data-template-name="contact-table">
             <div>
                 <span class="sctn-title">Contacts</span>
@@ -26,19 +36,6 @@
             <br />
             <table id="contacts-table">
                 <thead>
-                    <tr>
-                        <td colspan="3">
-                            <div>
-                                <div style="float:left;font-size: 9pt; vertical-align: bottom;">
-                                    {{controller.contactsCount}} Record(s)
-                                </div>
-                                <div>
-                                    <td colspan="3"><input type="button" {{action contactAdd}} value="New" /></td>
-                                </div>
-                                <br />
-                            </div>
-                        </td>
-                    </tr>
                     <tr>
                         <th>Contact</th>
                         <th>Twitter</th>
@@ -74,13 +71,21 @@
 
         <script type="text/x-handlebars" data-template-name="contact-table-row">
             <tr>
-                <td style="vertical-align: top;">
-                    <img {{bindAttr src="contact.imageUrl" alt="contact.fullName" title="contact.alias"}} width="50" height="50" /><br />{{contact.fullName}}
+                <td style="vertical-align: top; width: 200px;">
+                    <div>
+                        <div style="float:left; margin-right: 5px;">
+                            <img {{bindAttr src="contact.imageUrl" alt="contact.fullName" title="contact.alias"}} width="50" height="50" />
+                        </div>
+                        <div>
+                            {{contact.fullName}}<br />
+                            ({{contact.alias}})
+                        </div>
+                    </div>
                 </td>
                 <td> 
                     Twitter: {{#if contact.twitter}}<a {{bindAttr href="contact.twitterLink"}} target='_blank'>Follow on Twitter</a>{{else}}-{{/if}}<br />
                 </td>
-                <td>
+                <td style="width: 190px">
                     <input type="button" {{action contactDetails context="contact"}} value="Details"/> |
                     <input type="button" {{action contactEdit context="contact"}} value="Edit"/> |
                     <input type="button" {{action contactRemove context="contact"}} value="Remove" />
@@ -89,7 +94,10 @@
         </script>
 
         <script type="text/x-handlebars" data-template-name="home">
-            <h2>Welcome</h2>
+            <div>
+                <span class="sctn-title">Welcome</span>
+            </div>
+            <br />
             <br />
             <p>Bacon ipsum dolor sit amet qui ullamco exercitation, shankle beef sed bacon ground round kielbasa in. Prosciutto pig bresaola, qui meatloaf ea tongue non dolore et pork belly andouille ribeye spare ribs enim. Enim exercitation elit, brisket nisi ex swine in jerky consequat pastrami dolore sed ad. In drumstick cow, salami swine fatback short ribs ham ut in shankle consequat corned beef id. Deserunt prosciutto beef speck. Sirloin incididunt kielbasa excepteur irure.</p>
 
@@ -104,6 +112,11 @@
         </script>
 
         <script type="text/x-handlebars" data-template-name="contact-details">
+            <div>
+                <span class="sctn-title">Contacts</span>
+            </div>
+            <br />
+            <br />
             {{#if controller.isLoaded}} 
             <fieldset>
                 <legend>Contact Details</legend>
@@ -149,6 +162,11 @@
         </script>
 
         <script type="text/x-handlebars" data-template-name="contact-edit">
+            <div>
+                <span class="sctn-title">Contacts</span>
+            </div>
+            <br />
+            <br />
             <fieldset>
                 <legend>Edit Contact</legend>
                 <div style="position: relative">
@@ -196,6 +214,11 @@
         </script>
 
         <script type="text/x-handlebars" data-template-name="contact-add">
+            <div>
+                <span class="sctn-title">Contacts</span>
+            </div>
+            <br />
+            <br />
             <fieldset>
                 <legend>Add Contact</legend>
                 <div style="position: relative">

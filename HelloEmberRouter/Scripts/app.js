@@ -101,6 +101,11 @@ $(function () {
                 },
                 error: function (xhr, text, error) {
                     console.log('error: %@'.fmt(text));
+                    if (404 == xhr.status) {
+                        App.router.transitionTo('root.errors.404');
+                    } else {
+                        App.router.transitionTo('root.errors.index');
+                    }
                 },
                 complete: function (x) {
                     _self.set('isLoaded', true);
@@ -112,7 +117,6 @@ $(function () {
 
     App.ContactController = Ember.Controller.extend({
         contact: null,
-        templateName: 'contact-details',
         isLoaded: true,
         resourceUrl: '/api/contact/%@',
         find: function (id) {
@@ -143,6 +147,11 @@ $(function () {
                 },
                 error: function (xhr, text, error) {
                     console.log('contact-find -> error: %@'.fmt(text));
+                    if (404 == xhr.status) {
+                        App.router.transitionTo('root.errors.404');
+                    } else {
+                        App.router.transitionTo('root.errors.index');
+                    }
                 },
                 complete: function (x) {
                     _self.set('isLoaded', true);
@@ -171,6 +180,11 @@ $(function () {
                 },
                 error: function (xhr, text, error) {
                     console.log('contact-update -> error: %@'.fmt(text));
+                    if (404 == xhr.status) {
+                        App.router.transitionTo('root.errors.404');
+                    } else {
+                        App.router.transitionTo('root.errors.index');
+                    }
                 }
             });
         },
@@ -188,6 +202,11 @@ $(function () {
                 },
                 error: function (xhr, text, error) {
                     console.log('contact-add -> error: %@'.fmt(text));
+                    if (404 == xhr.status) {
+                        App.router.transitionTo('root.errors.404');
+                    } else {
+                        App.router.transitionTo('root.errors.index');
+                    }
                 },
                 complete: function (x) {
                     _self.set('isLoaded', true);
@@ -211,6 +230,11 @@ $(function () {
                 },
                 error: function (xhr, text, error) {
                     console.log('contact-remove -> error: %@'.fmt(text));
+                    if (404 == xhr.status) {
+                        App.router.transitionTo('root.errors.404');
+                    } else {
+                        App.router.transitionTo('root.errors.index');
+                    }
                 },
                 complete: function (x) {
                     _self.set('isLoaded', true);
@@ -218,6 +242,18 @@ $(function () {
                 }
             });
         }
+    });
+
+    App.ErrorController = Ember.Controller.extend({
+
+    });
+
+    App.ErrorGenericView = Ember.View.extend({
+        templateName: 'generic-error'
+    });
+
+    App.Error404View = Ember.View.extend({
+        templateName: 'error-404'
     });
 
     App.ContactsView = Ember.View.extend({
@@ -255,6 +291,29 @@ $(function () {
                 connectOutlets: function (router, context) {
                     router.get('applicationController').connectOutlet('home');
                 }
+            }),
+            errors: Ember.Route.extend({
+                route: '/errors',
+                index: Ember.Route.extend({
+                    route: '/',
+                    connectOutlets: function (router, context) {
+                        router.get('applicationController').connectOutlet({
+                            viewClass: App.ErrorGenericView,
+                            controller: router.get('errorController'),
+                            context: context
+                        });
+                    }
+                }),
+                404: Ember.Route.extend({
+                    route: '/404',
+                    connectOutlets: function (router, context) {
+                        router.get('applicationController').connectOutlet({
+                            viewClass: App.Error404View,
+                            controller: router.get('errorController'),
+                            context: context
+                        });
+                    }
+                })
             }),
             contacts: Ember.Route.extend({
                 route: '/contacts',

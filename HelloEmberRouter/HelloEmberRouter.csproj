@@ -168,9 +168,11 @@
     <Content Include="Content\themes\base\jquery.ui.theme.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Images\404-error.jpg" />
     <Content Include="Images\aspnet.png" />
     <Content Include="Images\banner.png" />
     <Content Include="Images\ember.png" />
+    <Content Include="Images\fail.jpg" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\ember-data.js" />
@@ -180,7 +182,9 @@
     <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\modernizr-2.0.6-development-only.js" />
     <Content Include="Scripts\prettify.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

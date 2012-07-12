@@ -41,7 +41,7 @@ In IIS configuration, follow [this link](http://geekswithblogs.net/michelotti/ar
     `<add name="SomeDBContext" connectionString="CONNECTION STRING GOES HERE" providerName="System.Data.SqlClient" />`
  - Open the Package Management Console and run the first migration:
    `Add-Migration init`
- - In your `Migrations` directory you should see a file nas been created with the *init* sulfix;
+ - In your `Migrations` directory you should see a file been created with the *init* sulfix;
  - Still in the PM Console, run the command  `Update-Database` to update and seed the database
  - Run the application 
 

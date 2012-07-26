@@ -331,7 +331,7 @@ $(function () {
                         var contact = context.context;
                         Bootstrap.ModalPane.popup({
                             heading: "Remove Contact",
-                            message: "Are you sure you want to remove <strong>%@</strong> from your contact list?".fmt(((null == contact.get('alias') || ('' == contact.get('alias'))) ? contact.get('fullName') : contact.get('fullName') === contact.get('alias') ? contact.get('fullName') : contact.get('fullNameAlias'))),
+                            message: "<div><div style='float: left;'><img src='%@' width='50' height='50' /></div><div> Are you sure you want to remove <strong>%@</strong> from your contact list?</div></div>".fmt(contact.get('imageUrl'), ((null == contact.get('alias') || ('' == contact.get('alias'))) ? contact.get('fullName') : contact.get('fullName') === contact.get('alias') ? contact.get('fullName') : contact.get('fullNameAlias'))),
                             primary: "OK",
                             secondary: "Cancel",
                             showBackdrop: true,
@@ -385,7 +385,7 @@ $(function () {
                         var contact = context.context;
                         Bootstrap.ModalPane.popup({
                             heading: "Remove Contact",
-                            message: "Are you sure you want to remove <strong>%@</strong> from your contact list?".fmt(((null == contact.get('alias') || ('' == contact.get('alias'))) ? contact.get('fullName') : contact.get('fullName') === contact.get('alias') ? contact.get('fullName') : contact.get('fullNameAlias'))),
+                            message: "<div><div style='float: left;'><img src='%@' width='50' height='50' /></div><div> Are you sure you want to remove <strong>%@</strong> from your contact list?</div></div>".fmt(contact.get('imageUrl'), ((null == contact.get('alias') || ('' == contact.get('alias'))) ? contact.get('fullName') : contact.get('fullName') === contact.get('alias') ? contact.get('fullName') : contact.get('fullNameAlias'))),
                             primary: "OK",
                             secondary: "Cancel",
                             showBackdrop: true,

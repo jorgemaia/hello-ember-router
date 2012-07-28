@@ -2,7 +2,7 @@ Ember.Router with ASP.NET MVC4 Web API
 ======================================
 --------------------------------------
 
-This is a sample application for LEARNING purposes which is intended to demonstrate how to use Ember.js implemeting route management. 
+This is a sample application for ***learning*** purposes which is intended to demonstrate how to use Ember.js implemeting route management. 
 The goal is to create a small CRUD implementation to demonstrate common practices of both Ember and Web API.
 
 **Note:** This is under development and will probably remain under development forever as new bits are released.
@@ -28,7 +28,7 @@ The goal is to create a small CRUD implementation to demonstrate common practice
          preCondition="integratedMode,runtimeVersionv4.0" />
 ```
 
-In IIS configuration, follow [this link](http://geekswithblogs.net/michelotti/archive/2011/05/28/resolve-404-in-iis-express-for-put-and-delete-verbs.aspx)
+For IIS configuration, follow [this link].(http://geekswithblogs.net/michelotti/archive/2011/05/28/resolve-404-in-iis-express-for-put-and-delete-verbs.aspx)
  
 
 **Steps to Run**

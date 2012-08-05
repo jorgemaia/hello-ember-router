@@ -28,7 +28,7 @@ The goal is to create a small CRUD implementation to demonstrate common practice
          preCondition="integratedMode,runtimeVersionv4.0" />
 ```
 
-For IIS configuration, follow [this link].(http://geekswithblogs.net/michelotti/archive/2011/05/28/resolve-404-in-iis-express-for-put-and-delete-verbs.aspx)
+For IIS configuration, follow [this link](http://geekswithblogs.net/michelotti/archive/2011/05/28/resolve-404-in-iis-express-for-put-and-delete-verbs.aspx).
  
 
 **Steps to Run**

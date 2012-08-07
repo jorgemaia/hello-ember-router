@@ -2,6 +2,9 @@ Ember.Router with ASP.NET MVC4 Web API
 ======================================
 --------------------------------------
 
+**Note**: The current code base uses Ember 0.9.8.1 and this is obsolete. This project will be branched off for reference and 
+master will be updated to use Ember 1.0 pre-release and later to 1.0 final when it's released.
+
 This is a sample application for ***learning*** purposes which is intended to demonstrate how to use Ember.js implemeting route management. 
 The goal is to create a small CRUD implementation to demonstrate common practices of both Ember and Web API.
 
